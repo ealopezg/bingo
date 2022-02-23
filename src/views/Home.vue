@@ -1,16 +1,16 @@
 <template>
   <div class="home">
     <h1>Bingo !</h1>
-    <div class="container">
+    <div class="container" style="max-width: 300px;">
+
       <div class="row mb-3">
-        <div class="col-12 col-lg-4 mb-3">
-          <button type="button" class="btn btn-primary" @click="this.$router.push('/game')">Nuevo Juego</button>
-        </div>
-        <div class="col-12 col-lg-4 mb-3">
-          <button type="button" class="btn btn-primary" @click="this.$router.push('/game/'+last_game_id)" >Continuar Juego</button>
-        </div>
         <div class="col">
-          <button type="button" class="btn btn-primary" @click="this.connect_game_modal.show()">Conectarse a Juego</button>
+          <div class="d-flex flex-column">
+            <button type="button" class="btn btn-primary m-3" @click="this.$router.push('/game')">Nuevo Juego</button>
+            <button type="button" class="btn btn-warning m-3" @click="this.$router.push('/game/'+last_game_id)" >Continuar Juego</button>
+            <button type="button" class="btn btn-info m-3" @click="this.connect_game_modal.show()">Conectarse a Juego</button>
+          </div>
+          
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@
             <div class="col">
                 <div class="d-flex">
                     <div class="">
-                        <h1>Juego: {{this.$route.params.id}}</h1>
+                        <h1>Bingo: {{this.$route.params.id}}</h1>
                     </div>
                     <div class="ms-auto">
                         <div class="btn-group" role="group" aria-label="Barra de herramientas">
@@ -51,13 +51,13 @@
                             </div>
                             <div class="col mb-3">
                                 <div class="d-flex flex-wrap justify-content-between align-items-center ">     
-                                    <div v-for="number in Object.keys(this.game.numbers).slice(numbers[0]-1,numbers[1])" :key="letter+number" :class="'number p-1 '+(this.game.numbers[number] ? 'fw-bold fs-5' : '')+' '+(number == this.game.last.substring(1) ? 'text-danger': '')">{{ number+' ' }}</div>
+                                    <div v-for="number in Object.keys(this.game.numbers).slice(numbers[0]-1,numbers[1])" :key="letter+number" :class="'number p-1 fs-5 '+(this.game.numbers[number] ? 'fw-bold' : '')+' '+(number == this.game.last.substring(1) ? 'text-primary': '')">{{ number+' ' }}</div>
                                 </div>
                             </div>  
                         </div>
                     </div>
                 </div>
-                <div class="row mt-4">
+                <div class="row mt-4" v-if="this.last_five.length > 0">
                     <div class="col">
                         <h4 class="mb-1">Ultimos 5</h4>
                         <div class="p-4 d-flex justify-content-between align-items-center">
@@ -199,7 +199,9 @@ export default {
                         if(new_val.last != this.game.last){
                             this.addToLastFive(this.game.last);
                             this.game = new_val;
-                            if(this.audio){this.say(this.game.last);}
+                            if(this.audio){
+                                this.say(this.game.last);
+                            }
                             
                             this.played = this.played+1;
                             if(this.game.last == "B00"){
