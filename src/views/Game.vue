@@ -169,12 +169,14 @@ export default {
             this.reset_modal = new Modal(document.getElementById('reset_modal'));
         }
         else{
+            
             const genGame = httpsCallable(functions, 'newGame');
             genGame()
             .then((result) => {
                 // Read result of the Cloud Function.
                 /** @type {any} */
                 //const data = result.data;
+                this.loading = false;
                 this.$router.push('/game/'+result.data.id)
             });
         }
