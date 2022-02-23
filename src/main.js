@@ -12,8 +12,13 @@ library.add(fas);
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 const app = createApp(App);
+
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(vueInsomnia);
 app.use(store);
 app.use(router);
+
+
+
+
 app.mount('#app');

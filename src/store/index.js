@@ -1,12 +1,25 @@
 import { createStore } from 'vuex'
-
-export default createStore({
+const store = createStore({
   state: {
+    last_game: ""
   },
   mutations: {
+    initializeStore(state) {
+      if (localStorage.getItem("store")) {
+        this.replaceState(
+          Object.assign(state, JSON.parse(localStorage.getItem("store")))
+        );
+      }
+    },
+    save_last_game(state, game_id) {
+      state.last_game = game_id;
+    }
   },
-  actions: {
-  },
-  modules: {
-  }
-})
+  actions: {},
+  modules: {},
+});
+store.subscribe((mutation, state) => {
+  localStorage.setItem("store", JSON.stringify(state));
+});
+
+export default store;
